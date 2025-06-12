@@ -1,0 +1,268 @@
+/* ------------------------------
+   RESET E CONFIGURAÇÕES BÁSICAS
+--------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ------------------------------
+   CONTAINER CENTRAL PADRÃO
+--------------------------------- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* ------------------------------
+   CABEÇALHO
+--------------------------------- */
+.site-header {
+    background-color: #005eff;
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.site-header h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: white;
+}
+
+.tagline {
+    text-align: center;
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-top: 8px;
+}
+
+/* ------------------------------
+   SEÇÃO DE APRESENTAÇÃO
+--------------------------------- */
+.apresentacao {
+    margin-top: 40px;
+}
+
+.apresentacao h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #222;
+}
+
+.cards-explicativos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    color: #005eff;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* ------------------------------
+   CONTEÚDO PRINCIPAL (FORMULÁRIO, ETC)
+--------------------------------- */
+.conteudo-principal {
+    margin-top: 60px;
+}
+
+/* ------------------------------
+   RODAPÉ
+--------------------------------- */
+.site-footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+/* ------------------------------
+   FORMULÁRIO
+--------------------------------- */
+.form-title {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.form-gerador {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #005eff;
+    outline: none;
+}
+
+/* BOTÃO */
+.btn-gerar {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #005eff, #0040cc);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-gerar:hover {
+    background: linear-gradient(135deg, #0040cc, #0033aa);
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-gerar:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------------------
+   ÁREA DE RESULTADO (CARTA GERADA)
+--------------------------------- */
+.resultado-carta {
+    margin-top: 40px;
+    background-color: #fff;
+    border: 2px dashed #005eff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: pre-wrap;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Botão para copiar */
+.btn-copiar {
+    margin-top: 15px;
+    display: inline-block;
+    background-color: #005eff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-copiar:hover {
+    background-color: #0040cc;
+}
+
+/* ------------------------------
+   RESPONSIVO
+--------------------------------- */
+@media (max-width: 768px) {
+    .header-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .form-gerador {
+        padding: 20px;
+    }
+
+    .cards-explicativos {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-gerar {
+        font-size: 1rem;
+    }
+
+    .resultado-carta {
+        padding: 20px;
+        font-size: 0.95rem;
+    }
+}

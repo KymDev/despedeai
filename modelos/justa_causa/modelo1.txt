@@ -1,0 +1,11 @@
+{cidade}, {local_data}
+
+À {empresa},
+
+Em respeito às normas trabalhistas, comunico o desligamento do meu vínculo empregatício por justa causa, conforme previsto no artigo 482 da CLT.
+
+Gostaria de esclarecer que estou ciente dos motivos que levaram a esta decisão e manifesto minha intenção de resolver pendências conforme necessário.
+
+Atenciosamente,
+
+{nome}

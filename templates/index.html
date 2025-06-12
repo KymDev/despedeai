@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Gerador de Carta de Demissão</h2>
+<form method="POST" action="/">
+    <div class="form-group">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+    </div>
+
+    <div class="form-group">
+        <label for="cargo">Cargo:</label>
+        <input type="text" id="cargo" name="cargo" placeholder="Seu cargo na empresa" required>
+    </div>
+
+    <div class="form-group">
+        <label for="empresa">Empresa:</label>
+        <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" required>
+    </div>
+
+    <div class="form-group">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Sua cidade" required>
+    </div>
+
+    <div class="form-group">
+        <label for="categoria">Categoria da Carta:</label>
+        <select id="categoria" name="categoria" required>
+            {% for cat in categorias.keys() %}
+            <option value="{{ cat }}">{{ cat.replace('_', ' ').title() }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="modelo">Modelo:</label>
+        <select id="modelo" name="modelo" required>
+            {% if categorias %}
+            {% for modelo in categorias[categorias.keys()|list|first] %}
+            <option value="{{ modelo }}">{{ modelo.replace('.txt', '').title() }}</option>
+            {% endfor %}
+            {% else %}
+            <option disabled>Nenhum modelo disponível</option>
+            {% endif %}
+        </select>
+    </div>
+
+    <div class="form-group" id="motivo-group" style="display:none;">
+        <label for="motivo">Motivo (opcional):</label>
+        <textarea id="motivo" name="motivo" rows="3" placeholder="Motivo da demissão, se desejar"></textarea>
+    </div>
+
+    <button type="submit" class="btn-primary">Gerar Carta</button>
+</form>
+{% endblock %}

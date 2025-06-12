@@ -1,0 +1,11 @@
+{cidade}, {local_data}
+
+Prezados Senhores,
+
+Venho por meio desta formalizar meu desligamento da empresa {empresa} por justa causa, reconhecendo as circunstâncias que motivaram tal medida.
+
+Solicito que sejam tomadas as providências legais cabíveis para a finalização deste processo.
+
+Atenciosamente,
+
+{nome}

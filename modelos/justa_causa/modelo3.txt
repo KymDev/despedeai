@@ -1,0 +1,11 @@
+{cidade}, {local_data}
+
+À {empresa},
+
+Informo o término imediato do meu contrato de trabalho por justa causa, conforme os dispositivos legais da Consolidação das Leis do Trabalho.
+
+Reitero minha disposição para eventuais esclarecimentos e resolução de pendências.
+
+Cordialmente,
+
+{nome}

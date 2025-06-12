@@ -1,0 +1,11 @@
+{cidade}, {local_data}
+
+Prezado(a) {empresa},
+
+Venho por meio desta formalizar meu pedido de demissão do cargo de {cargo} nesta empresa, conforme previsto na Consolidação das Leis do Trabalho (CLT).
+
+Agradeço pela oportunidade e experiência adquirida durante meu período de trabalho.
+
+Atenciosamente,
+
+{nome}
