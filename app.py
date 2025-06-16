@@ -5,6 +5,8 @@ from io import BytesIO
 from weasyprint import HTML
 import re
 import unicodedata
+from flask import send_from_directory
+
 
 app = Flask(__name__)
 
@@ -89,6 +91,10 @@ def index():
         return render_template("resultado.html", carta=carta, nome=nome)
 
     return render_template("index.html", categorias=categorias)
+
+@app.route('/ads.txt')
+def serve_ads_txt():
+    return send_from_directory(app.root_path, 'ads.txt')
 
 # Rota para retornar modelos disponíveis para uma categoria (JSON)
 @app.route('/modelos')
