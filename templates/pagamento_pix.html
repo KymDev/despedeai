@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block title %}Pagamento PIX - Despede AI{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-qrcode"></i> Pagamento via PIX
+                    </h3>
+                    <p class="mb-0">Kit Rescisão Premium - R$ {{ "%.2f"|format(transacao.valor) }}</p>
+                </div>
+                
+                <div class="card-body">
+                    <div class="row">
+                        <!-- QR Code -->
+                        <div class="col-md-6 text-center">
+                            <h5 class="text-primary mb-3">
+                                <i class="fas fa-mobile-alt"></i> Escaneie o QR Code
+                            </h5>
+                            
+                            <div class="qr-container mb-3">
+                                <img src="data:image/png;base64,{{ transacao.qr_code }}" 
+                                     alt="QR Code PIX" class="img-fluid border rounded" 
+                                     style="max-width: 250px;">
+                            </div>
+                            
+                            <div class="alert alert-info">
+                                <small>
+                                    <i class="fas fa-info-circle"></i> 
+                                    Abra o app do seu banco e escaneie o código
+                                </small>
+                            </div>
+                        </div>
+                        
+                        <!-- Instruções -->
+                        <div class="col-md-6">
+                            <h5 class="text-primary mb-3">
+                                <i class="fas fa-list-ol"></i> Como pagar
+                            </h5>
+                            
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item">
+                                    Abra o aplicativo do seu banco
+                                </li>
+                                <li class="list-group-item">
+                                    Escolha a opção <strong>"PIX"</strong>
+                                </li>
+                                <li class="list-group-item">
+                                    Selecione <strong>"Ler QR Code"</strong>
+                                </li>
+                                <li class="list-group-item">
+                                    Escaneie o código ao lado
+                                </li>
+                                <li class="list-group-item">
+                                    Confirme o pagamento de <strong>R$ {{ "%.2f"|format(transacao.valor) }}</strong>
+                                </li>
+                            </ol>
+                            
+                            <div class="alert alert-warning mt-3">
+                                <small>
+                                    <i class="fas fa-clock"></i> 
+                                    <strong>Tempo limite:</strong> 1 hora para pagamento
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Código PIX Copia e Cola -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6 class="text-primary">
+                                <i class="fas fa-copy"></i> Ou copie o código PIX:
+                            </h6>
+                            <div class="input-group">
+                                <input type="text" class="form-control font-monospace small" 
+                                       id="pixCode" value="{{ transacao.payload }}" readonly>
+                                <button class="btn btn-outline-secondary" type="button" 
+                                        onclick="copiarPix()">
+                                    <i class="fas fa-copy"></i> Copiar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Status do Pagamento -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div id="statusPagamento" class="alert alert-warning">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border spinner-border-sm me-2" role="status">
+                                        <span class="visually-hidden">Carregando...</span>
+                                    </div>
+                                    <span>Aguardando pagamento...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Informações da Compra -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="card-title">
+                                        <i class="fas fa-shopping-cart"></i> Resumo da Compra
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="mb-1"><strong>Cliente:</strong> {{ dados_usuario.nome }}</p>
+                                            <p class="mb-1"><strong>Produto:</strong> Kit Rescisão Premium</p>
+                                            <p class="mb-1"><strong>Valor:</strong> R$ {{ "%.2f"|format(transacao.valor) }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="mb-1"><strong>TXID:</strong> {{ transacao.txid }}</p>
+                                            <p class="mb-1"><strong>Expira em:</strong> <span id="countdown"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botão de Teste (apenas para desenvolvimento) -->
+            {% if config.DEBUG %}
+            <div class="card mt-3 border-danger">
+                <div class="card-body">
+                    <h6 class="text-danger">🧪 Modo de Teste</h6>
+                    <p class="small text-muted">
+                        Este botão simula a confirmação do pagamento para testes.
+                        Em produção, o pagamento é confirmado automaticamente pelo banco.
+                    </p>
+                    <button class="btn btn-danger btn-sm" onclick="simularPagamento()">
+                        Simular Pagamento Aprovado
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+// Variáveis globais
+const txid = '{{ transacao.txid }}';
+const expiresAt = new Date('{{ transacao.expires_at }}');
+let verificacaoInterval;
+let countdownInterval;
+
+// Função para copiar código PIX
+function copiarPix() {
+    const pixCode = document.getElementById('pixCode');
+    pixCode.select();
+    pixCode.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    
+    // Feedback visual
+    const btn = event.target.closest('button');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+    btn.classList.remove('btn-outline-secondary');
+    btn.classList.add('btn-success');
+    
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('btn-success');
+        btn.classList.add('btn-outline-secondary');
+    }, 2000);
+}
+
+// Função para verificar status do pagamento
+function verificarPagamento() {
+    fetch(`/verificar-pagamento/${txid}`)
+        .then(response => response.json())
+        .then(data => {
+            const statusDiv = document.getElementById('statusPagamento');
+            
+            switch(data.status) {
+                case 'pago':
+                    statusDiv.className = 'alert alert-success';
+                    statusDiv.innerHTML = `
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <div>
+                                <strong>Pagamento confirmado!</strong><br>
+                                <small>Seu kit está sendo gerado e será enviado por e-mail em instantes.</small>
+                            </div>
+                        </div>
+                    `;
+                    clearInterval(verificacaoInterval);
+                    clearInterval(countdownInterval);
+                    
+                    // Redireciona após 3 segundos
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 3000);
+                    break;
+                    
+                case 'expirado':
+                    statusDiv.className = 'alert alert-danger';
+                    statusDiv.innerHTML = `
+                        <i class="fas fa-times-circle me-2"></i>
+                        <strong>Pagamento expirado!</strong> 
+                        <a href="/calculadora" class="alert-link">Clique aqui para tentar novamente</a>
+                    `;
+                    clearInterval(verificacaoInterval);
+                    clearInterval(countdownInterval);
+                    break;
+                    
+                case 'pendente':
+                    // Mantém status atual
+                    break;
+                    
+                default:
+                    console.log('Status desconhecido:', data.status);
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao verificar pagamento:', error);
+        });
+}
+
+// Função para atualizar countdown
+function atualizarCountdown() {
+    const agora = new Date();
+    const tempoRestante = expiresAt - agora;
+    
+    if (tempoRestante <= 0) {
+        document.getElementById('countdown').textContent = 'Expirado';
+        clearInterval(countdownInterval);
+        return;
+    }
+    
+    const minutos = Math.floor(tempoRestante / (1000 * 60));
+    const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+    
+    document.getElementById('countdown').textContent = 
+        `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+}
+
+// Função para simular pagamento (apenas teste)
+function simularPagamento() {
+    if (confirm('Simular confirmação de pagamento?')) {
+        fetch(`/simular-pagamento/${txid}`)
+            .then(() => {
+                verificarPagamento();
+            });
+    }
+}
+
+// Inicia verificações automáticas
+document.addEventListener('DOMContentLoaded', function() {
+    // Verifica pagamento a cada 5 segundos
+    verificacaoInterval = setInterval(verificarPagamento, 5000);
+    
+    // Atualiza countdown a cada segundo
+    countdownInterval = setInterval(atualizarCountdown, 1000);
+    atualizarCountdown(); // Primeira execução
+    
+    // Verifica imediatamente
+    verificarPagamento();
+});
+
+// Limpa intervals ao sair da página
+window.addEventListener('beforeunload', function() {
+    if (verificacaoInterval) clearInterval(verificacaoInterval);
+    if (countdownInterval) clearInterval(countdownInterval);
+});
+</script>
+{% endblock %}
+

@@ -1,13 +1,17 @@
 {cidade}, {local_data}
 
-À {empresa},
+À
+{empresa}
 
-Comunico que estou cumprindo o aviso prévio referente ao meu pedido de demissão do cargo de {cargo} nesta empresa, conforme previsto no artigo 487 da Consolidação das Leis do Trabalho.
+Prezados Senhores,
 
-Informo que meu último dia de trabalho será em conformidade com o prazo legal de {motivo_opcional} dias.
+Venho, por meio desta, formalizar meu pedido de demissão do cargo de {cargo} que atualmente ocupo nesta empresa, iniciando o cumprimento do aviso prévio conforme determina o artigo 487 da Consolidação das Leis do Trabalho (CLT).
 
-Coloco-me à disposição para colaborar durante este período de transição.
+Informo que meu último dia de trabalho será dentro do prazo legal de {motivo_opcional} dias, contados a partir desta data.
+
+Durante este período, coloco-me à disposição para colaborar com a transição das minhas atividades, buscando garantir uma passagem de responsabilidades tranquila e eficiente.
+
+Agradeço pela oportunidade de ter feito parte da equipe e por todo o aprendizado adquirido ao longo do tempo em que estive nesta organização.
 
 Atenciosamente,
-
 {nome}

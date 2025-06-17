@@ -1,3 +1,9 @@
 Flask==2.3.2
 WeasyPrint
 gunicorn
+python-docx
+openpyxl
+qrcode[pil]
+Pillow
+requests
+

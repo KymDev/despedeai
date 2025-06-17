@@ -1,228 +1,232 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="resultado-wrapper">
-  <!-- Área principal da carta -->
-  <section class="carta-preview">
-    <h2>Carta Gerada</h2>
-    <p class="aviso-preview">
-      Esta é apenas uma prévia visual. Ao baixar em PDF, a carta será gerada corretamente com a formatação ideal para impressão ou envio.
-    </p>
-    <div>{{ carta | safe }}</div>
-  </section>
-
-  <!-- Painel lateral com ações e histórico -->
-  <aside class="acoes-e-historico">
-    <div class="botoes-acao">
-      <form method="POST" action="/gerar-pdf">
-        <input type="hidden" name="carta" value="{{ carta | e }}">
-        <input type="hidden" name="nome" value="{{ nome | e }}">
-        <button type="submit" class="btn-gerar">Baixar PDF</button>
-      </form>
-
-      <a href="{{ url_for('index') }}" class="btn-gerar btn-secundario">Gerar Nova Carta</a>
-      <button class="btn-gerar btn-verde" onclick="copiarTextoCarta()">Copiar Carta</button>
+<div class="container mt-4">
+    <!-- Seção de Sucesso e Ações Principais -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-10">
+            <div class="alert alert-success border-0 shadow-sm">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h4 class="alert-heading mb-2">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Carta Gerada com Sucesso!
+                        </h4>
+                        <p class="mb-0">Sua carta de demissão foi criada e está pronta para download. Você pode baixar em PDF ou copiar o texto.</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <form method="POST" action="/gerar-pdf" class="d-inline">
+                            <input type="hidden" name="carta" value="{{ carta | e }}">
+                            <input type="hidden" name="nome" value="{{ nome | e }}">
+                            <button type="submit" class="btn btn-success btn-lg me-2">
+                                <i class="fas fa-download me-2"></i>Baixar PDF
+                            </button>
+                        </form>
+                        <button class="btn btn-outline-success btn-lg" onclick="copiarTextoCarta()">
+                            <i class="fas fa-copy me-2"></i>Copiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <section class="historico-cartas">
-      <h3>Histórico de Cartas</h3>
-      {% if session.historico %}
-        <ul>
-          {% for c in session.historico %}
-            <li>
-              <button onclick="mostrarCartaHistorico({{ loop.index0 | int }})">
-                {{ c[:50] | striptags }}{% if c|length > 50 %}...{% endif %}
-              </button>
-            </li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p class="sem-cartas">Nenhuma carta gerada ainda.</p>
-      {% endif %}
-    </section>
-  </aside>
+    <!-- Oferta Kit Premium -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-10">
+            <div class="card border-warning shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-0">
+                                <i class="fas fa-star me-2"></i>
+                                Maximize seus Direitos com o Kit Premium
+                            </h5>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <span class="badge bg-danger fs-6">Oferta Especial</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <p class="mb-2">
+                                <strong>Garanta todos os seus direitos trabalhistas!</strong> 
+                                O Kit Premium inclui documentos completos, planilhas de cálculo e guia estratégico.
+                            </p>
+                            <ul class="list-unstyled mb-0">
+                                <li><i class="fas fa-check text-success me-2"></i>Relatório personalizado de verbas rescisórias</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Modelos editáveis de documentos</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Planilha financeira detalhada</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Guia estratégico para negociação</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="price-display mb-3">
+                                <span class="text-muted text-decoration-line-through">R$ 49,90</span>
+                                <h3 class="text-success mb-0">R$ 19,99</h3>
+                                <small class="text-muted">Promoção limitada</small>
+                            </div>
+                            <a href="{{ url_for('calculadora_trabalhista') }}" class="btn btn-warning btn-lg w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>
+                                Adquirir Kit Premium
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prévia da Carta -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-0">
+                                <i class="fas fa-file-alt me-2"></i>
+                                Prévia da Carta de Demissão
+                            </h5>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                                <i class="fas fa-plus me-2"></i>Gerar Nova Carta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info border-0">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Prévia Visual:</strong> Esta é apenas uma visualização. Ao baixar em PDF, a carta será formatada adequadamente para impressão ou envio.
+                    </div>
+                    
+                    <div class="carta-content bg-white border rounded p-4" style="font-family: 'Times New Roman', serif; line-height: 1.8; white-space: pre-wrap;">{{ carta | safe }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ações Adicionais -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-10">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="feature-icon mx-auto mb-3" style="width: 48px; height: 48px;">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h6 class="fw-bold">Calcule suas Verbas</h6>
+                            <p class="text-muted small mb-3">Descubra exatamente quanto você tem direito a receber</p>
+                            <a href="{{ url_for('calculadora_trabalhista') }}" class="btn btn-outline-primary btn-sm">
+                                Usar Calculadora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="feature-icon mx-auto mb-3" style="width: 48px; height: 48px;">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <h6 class="fw-bold">Compartilhar</h6>
+                            <p class="text-muted small mb-3">Ajude outros trabalhadores com nossa ferramenta</p>
+                            <button class="btn btn-outline-primary btn-sm" onclick="compartilharSite()">
+                                Compartilhar Site
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="feature-icon mx-auto mb-3" style="width: 48px; height: 48px;">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h6 class="fw-bold">Precisa de Ajuda?</h6>
+                            <p class="text-muted small mb-3">Entre em contato conosco para suporte</p>
+                            <a href="mailto:despede.ai@hotmail.com" class="btn btn-outline-primary btn-sm">
+                                Falar Conosco
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-  const cartaAtual = {{ carta | tojson | safe }};
-  const cartas = {{ session.historico | default([]) | tojson | safe }};
+const cartaAtual = {{ carta | tojson | safe }};
 
-  function copiarTextoCarta() {
+function copiarTextoCarta() {
     navigator.clipboard.writeText(cartaAtual).then(() => {
-      alert('Texto da carta copiado para a área de transferência!');
+        // Mostrar feedback visual
+        const btn = event.target;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check me-2"></i>Copiado!';
+        btn.classList.remove('btn-outline-success');
+        btn.classList.add('btn-success');
+        
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('btn-success');
+            btn.classList.add('btn-outline-success');
+        }, 2000);
     }).catch(() => {
-      alert('Falha ao copiar o texto.');
+        alert('Falha ao copiar o texto. Tente selecionar e copiar manualmente.');
     });
-  }
+}
 
-  function mostrarCartaHistorico(index) {
-    if (index >= 0 && index < cartas.length) {
-      const container = document.querySelector('.carta-preview div');
-      container.textContent = cartas[index];
+function compartilharSite() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'DespedeAí - Gerador de Carta de Demissão',
+            text: 'Gere sua carta de demissão profissional gratuitamente!',
+            url: window.location.origin
+        });
+    } else {
+        // Fallback para navegadores que não suportam Web Share API
+        navigator.clipboard.writeText(window.location.origin).then(() => {
+            alert('Link copiado para a área de transferência!');
+        });
     }
-  }
+}
 </script>
 
 <style>
-  .resultado-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin: 2rem;
-  }
-
-  .carta-preview {
-    flex: 3;
-    min-width: 320px;
-    max-height: 80vh;
+.carta-content {
+    max-height: 500px;
     overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 1.5rem;
-    background: #fff;
-    border-radius: 8px;
-    font-family: 'Courier New', monospace;
-    white-space: pre-wrap;
-    line-height: 1.6;
-  }
-
-  .aviso-preview {
-    background: #fff3cd;
-    border-left: 5px solid #ffeeba;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
-    color: #856404;
-    border-radius: 4px;
-    font-size: 0.95rem;
-  }
-
-  .acoes-e-historico {
-    flex: 1;
-    min-width: 280px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .botoes-acao {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .btn-gerar {
-    background: linear-gradient(135deg, #005eff, #0040cc);
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    padding: 12px 20px;
-    transition: all 0.3s ease-in-out;
-    width: 100%;
-    text-align: center;
-  }
-
-  .btn-gerar:hover {
-    background: linear-gradient(135deg, #0040cc, #0033aa);
-    transform: scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  .btn-gerar:active {
-    transform: scale(0.98);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  .btn-secundario {
-    background: #6c757d;
-  }
-
-  .btn-verde {
-    background: #198754;
-  }
-
-  .historico-cartas {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 8px;
-    flex-grow: 1;
-    overflow-y: auto;
-  }
-
-  .historico-cartas ul {
-    list-style: none;
-    padding-left: 0;
-    max-height: 300px;
-    overflow-y: auto;
-  }
-
-  .historico-cartas li {
-    margin-bottom: 0.5rem;
-  }
-
-  .historico-cartas button {
-    background: none;
-    border: none;
-    color: #0d6efd;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    padding: 0.25rem 0;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .sem-cartas {
-    color: #6c757d;
-    font-style: italic;
-  }
-
-  /* Responsivo para dispositivos móveis */
-  @media (max-width: 768px) {
-    .resultado-wrapper {
-      flex-direction: column;
-      margin: 1rem;
-    }
-
-    .carta-preview,
-    .acoes-e-historico {
-      width: 100%;
-      max-height: none;
-    }
-  }
-  @media (max-width: 480px) {
-  .resultado-wrapper {
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1rem 0.5rem;
-  }
-
-  .carta-preview {
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-
-  .aviso-preview {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .btn-gerar {
-    padding: 10px 14px;
-    font-size: 0.9rem;
-    border-radius: 8px;
-  }
-
-  .historico-cartas h3 {
-    font-size: 1rem;
-  }
-
-  .historico-cartas button {
-    font-size: 0.85rem;
-  }
+    font-size: 14px;
 }
 
+.price-display {
+    background: rgba(255, 193, 7, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .carta-content {
+        font-size: 12px;
+        padding: 1rem;
+    }
+    
+    .price-display h3 {
+        font-size: 1.5rem;
+    }
+}
 </style>
 {% endblock %}
+
