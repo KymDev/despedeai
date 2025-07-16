@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despede AI - Calculadora Trabalhista, Gerador de Currículo e Cartas de Demissão</title>
+    <meta name="description" content="Calculadora trabalhista gratuita para cálculo de rescisão, gerador de currículos profissionais e cartas de demissão. Ferramenta completa para direitos trabalhistas no Brasil 2025.">
+    <meta name="keywords" content="calculadora trabalhista, rescisão trabalhista, FGTS, aviso prévio, 13º salário, férias proporcionais, currículo profissional, carta de demissão, direitos trabalhistas, CLT, Brasil">
+    <meta name="author" content="Despede AI">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="pt-BR">
+    <meta name="geo.region" content="BR">
+    <meta name="geo.country" content="Brasil">
+    
+    <!-- Open Graph para redes sociais -->
+    <meta property="og:title" content="Simplifique sua Rescisão Trabalhista" />
+    <meta property="og:description" content="Gere cartas de demissão profissionais e calcule suas verbas rescisórias com precisão. Tudo online, grátis e em poucos minutos." />
+    <meta property="og:image" content="https://despedeai.site/static/img/ogimage.png" />
+    <meta property="og:url" content="https://despedeai.site" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Simplifique sua Rescisão Trabalhista" />
+    <meta name="twitter:description" content="Gere cartas de demissão profissionais e calcule suas verbas rescisórias com precisão. Tudo online, grátis e em poucos minutos." />
+    <meta name="twitter:image" content="https://despedeai.site/static/img/ogimage.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="static/img/icon.ico">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Scripts para analytics e ads -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="2f2e7441-43af-487b-84f9-b5b18cfbd117" type="text/javascript" async></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F5JXTFQZBT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-F5JXTFQZBT');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9502871749159333"
+            crossorigin="anonymous"></script>
+
+    <style>
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        /* Container do logo com texto */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-image {
+            height: 50px;
+        }
+
+        .logo-image img {
+            height: 100%;
+            max-width: 180px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, #764ba2, #667eea);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 0;
+            min-height: calc(100vh - 80px);
+        }
+
+        .section {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .section-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        /* Forms */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e1e5e9;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+        }
+
+        /* Results */
+        .result-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .result-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .result-item h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Curriculum Styles */
+        .curriculum-preview {
+            border: 1px solid #e1e5e9;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .curriculum-header {
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .curriculum-header h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .curriculum-section {
+            margin-bottom: 2rem;
+        }
+
+        .curriculum-section h3 {
+            color: #667eea;
+            border-bottom: 2px solid #e1e5e9;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #667eea;
+        }
+
+        .experience-item h4 {
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-company {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .experience-period {
+            color: #666;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0.75rem 0;
+            }
+
+            .logo-container {
+                gap: 10px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+
+            .section-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .section-content {
+                padding: 1rem;
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .curriculum-preview {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .skills-container {
+                justify-content: center;
+            }
+
+            .experience-item {
+                padding-left: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .section-header {
+                padding: 1.5rem 1rem;
+            }
+
+            .section-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .nav-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+                min-width: 100px;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .logo-image {
+                height: 35px;
+            }
+
+            .form-control {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .result-item {
+                padding: 0.75rem;
+            }
+
+            .result-value {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-btn, .btn {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+
+            .form-control {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+
+            .nav-btn:hover, .btn:hover {
+                transform: none;
+            }
+
+            .nav-btn:active, .btn:active {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .section-header {
+                padding: 1rem;
+            }
+
+            .section-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .nav-buttons {
+                gap: 0.25rem;
+            }
+
+            .nav-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 5px solid;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+            color: #0c5460;
+        }
+
+        /* Hide/Show Elements */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Print Styles */
+        @media print {
+            .header, .nav-buttons, .btn, .advogado-card {
+                display: none !important;
+            }
+            
+            .section {
+                display: block !important;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            body {
+                background: white;
+            }
+        }
+
+        /* Novo: Estilos para o footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Novo: Card flutuante do advogado - ATUALIZADO */
+        .advogado-card {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 220px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            text-align: center;
+            z-index: 999;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .advogado-card.minimizado {
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+        }
+
+        .advogado-card.minimizado .advogado-conteudo {
+            display: none;
+        }
+
+        .advogado-card.minimizado .btn-minimizar {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+        }
+
+        .advogado-conteudo {
+            transition: opacity 0.3s ease;
+        }
+
+        .advogado-foto {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            border: 3px solid #667eea;
+        }
+
+        .advogado-nome {
+            font-weight: bold;
+            margin: 5px 0;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .advogado-especialidade {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .btn-advogado {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .btn-advogado:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-minimizar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #764ba2;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-minimizar:hover {
+            background: #f0f0f0;
+        }
+
+        /* Responsividade para o card */
+        @media (max-width: 768px) {
+            .advogado-card {
+                width: 180px;
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .advogado-card.minimizado {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .advogado-card {
+                width: 160px;
+                padding: 10px;
+            }
+            
+            .advogado-card.minimizado {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .advogado-foto {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* Novo: Estilos para o status de aguardando parceria */
+        .parceria-status {
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f0f5ff;
+            position: relative;
+        }
+
+        .parceria-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            border-top-color: #667eea;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .parceria-text {
+            display: inline-block;
+            vertical-align: middle;
+            color: #667eea;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Container do logo com texto -->
+                <div class="logo-container">
+                    <div class="logo-image">
+                        <img src="static/img/logo.png" alt="Logo">
+                    </div>
+                    <div class="logo-text">DespedeAí</div>
+                </div>
+                <nav class="nav-buttons">
+                    <button class="nav-btn active" onclick="showSection('calculadora', this)">
+                        📊 Calculadora Trabalhista
+                    </button>
+                    <button class="nav-btn" onclick="showSection('curriculo', this)">
+                        📄 Criar Currículo
+                    </button>
+                    <button class="nav-btn" onclick="showSection('carta', this)">
+                        ✉️ Carta de Demissão
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Card flutuante do advogado - ATUALIZADO COM STATUS DE PARCERIA -->
+    <div class="advogado-card" id="advogadoCard">
+        <button class="btn-minimizar" onclick="toggleAdvogadoCard()">×</button>
+        <div class="advogado-conteudo">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
+                 alt="Dr. Rodrigo Mendes" class="advogado-foto">
+            
+            <div class="parceria-status">
+                <span class="parceria-spinner"></span>
+                <span class="parceria-text">Aguardando parceria</span>
+            </div>
+            
+            <div class="advogado-nome">Serviço em breve</div>
+            <div class="advogado-especialidade">Estamos estabelecendo parcerias</div>
+            
+            <button class="btn-advogado" disabled>
+                <i class="fas fa-spinner fa-spin"></i> Em breve
+            </button>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Seção Calculadora Trabalhista -->
+            <section id="calculadora" class="section active">
+                <div class="section-header">
+                    <h1>📊 Calculadora Trabalhista</h1>
+                    <p>Calcule suas verbas rescisórias de forma precisa e detalhada</p>
+                </div>
+                <div class="section-content">
+                    <form id="calculadoraForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" name="nome" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cargo">Cargo/Função</label>
+                                <input type="text" id="cargo" name="cargo" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa">Empresa</label>
+                                <input type="text" id="empresa" name="empresa" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="salario">Salário Bruto (R$)</label>
+                                <input type="number" id="salario" name="salario" class="form-control" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="data_admissao">Data de Admissão</label>
+                                <input type="date" id="data_admissao" name="data_admissao" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="data_demissao">Data de Demissão</label>
+                                <input type="date" id="data_demissao" name="data_demissao" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_demissao">Tipo de Demissão</label>
+                                <select id="tipo_demissao" name="tipo_demissao" class="form-control" required>
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="sem_justa_causa">Demissão sem Justa Causa</option>
+                                    <option value="justa_causa">Demissão por Justa Causa</option>
+                                    <option value="pedido_demissao">Pedido de Demissão</option>
+                                    <option value="acordo">Rescisão por Acordo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="saldo_fgts">Saldo FGTS (R$)</label>
+                                <input type="number" id="saldo_fgts" name="saldo_fgts" class="form-control" step="0.01" min="0" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="dias_trabalhados_mes">Dias Trabalhados no Mês</label>
+                                <input type="number" id="dias_trabalhados_mes" name="dias_trabalhados_mes" class="form-control" min="0" max="31" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="horas_extras_mes">Horas Extras/Mês</label>
+                                <input type="number" id="horas_extras_mes" name="horas_extras_mes" class="form-control" min="0" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="dependentes_ir">Dependentes IR</label>
+                                <input type="number" id="dependentes_ir" name="dependentes_ir" class="form-control" min="0" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="aviso_trabalhado">Aviso Prévio</label>
+                                <select id="aviso_trabalhado" name="aviso_trabalhado" class="form-control">
+                                    <option value="false">Indenizado</option>
+                                    <option value="true">Trabalhado</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ferias_vencidas">Férias Vencidas (períodos)</label>
+                                <input type="number" id="ferias_vencidas" name="ferias_vencidas" class="form-control" min="0" value="0">
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">
+                                🧮 Calcular Rescisão
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="calculadoraLoading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Calculando suas verbas rescisórias...</p>
+                    </div>
+
+                    <div id="calculadoraResult" class="hidden">
+                        <!-- Resultado será inserido aqui via JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Criar Currículo -->
+            <section id="curriculo" class="section">
+                <div class="section-header">
+                    <h1>📄 Gerador de Currículo</h1>
+                    <p>Crie um currículo profissional e atrativo</p>
+                </div>
+                <div class="section-content">
+                    <form id="curriculoForm">
+                        <h3>📋 Dados Pessoais</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="curr_nome">Nome Completo</label>
+                                <input type="text" id="curr_nome" name="nome_completo" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="curr_email">E-mail</label>
+                                <input type="email" id="curr_email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="curr_telefone">Telefone</label>
+                                <input type="tel" id="curr_telefone" name="telefone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="curr_cidade">Cidade</label>
+                                <input type="text" id="curr_cidade" name="cidade" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="curr_estado">Estado</label>
+                                <input type="text" id="curr_estado" name="estado" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="curr_linkedin">LinkedIn (opcional)</label>
+                                <input type="url" id="curr_linkedin" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/seuperfil">
+                            </div>
+                        </div>
+
+                        <h3>💼 Resumo Profissional</h3>
+                        <div class="form-group">
+                            <label for="curr_resumo">Resumo Profissional</label>
+                            <textarea id="curr_resumo" name="resumo_profissional" class="form-control" rows="4" placeholder="Descreva brevemente sua experiência e objetivos profissionais..."></textarea>
+                        </div>
+
+                        <h3>🏢 Experiência Profissional</h3>
+                        <div id="experienciasContainer">
+                            <div class="experiencia-item" data-index="0">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Cargo</label>
+                                        <input type="text" name="experiencias[0][cargo]" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Empresa</label>
+                                        <input type="text" name="experiencias[0][empresa]" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Período</label>
+                                        <input type="text" name="experiencias[0][periodo]" class="form-control" placeholder="Ex: Jan 2020 - Dez 2023" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descrição das Atividades</label>
+                                    <textarea name="experiencias[0][descricao]" class="form-control" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="adicionarExperiencia()">
+                            ➕ Adicionar Experiência
+                        </button>
+
+                        <h3>🎓 Formação Acadêmica</h3>
+                        <div id="educacaoContainer">
+                            <div class="educacao-item" data-index="0">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Curso</label>
+                                        <input type="text" name="educacao[0][curso]" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Instituição</label>
+                                        <input type="text" name="educacao[0][instituicao]" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Período</label>
+                                        <input type="text" name="educacao[0][periodo]" class="form-control" placeholder="Ex: 2018 - 2022" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="adicionarEducacao()">
+                            ➕ Adicionar Formação
+                        </button>
+
+                        <h3>🛠️ Habilidades</h3>
+                        <div class="form-group">
+                            <label for="curr_habilidades">Habilidades (separadas por vírgula)</label>
+                            <textarea id="curr_habilidades" name="habilidades" class="form-control" rows="3" placeholder="Ex: Microsoft Office, Inglês Fluente, Gestão de Equipes, Python, Marketing Digital"></textarea>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button type="submit" class="btn btn-primary">
+                                📄 Gerar Currículo
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="curriculoLoading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Gerando seu currículo...</p>
+                    </div>
+
+                    <div id="curriculoPreview" class="hidden">
+                        <!-- Preview do currículo será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Carta de Demissão -->
+            <section id="carta" class="section">
+                <div class="section-header">
+                    <h1>✉️ Gerador de Carta de Demissão</h1>
+                    <p>Crie cartas de demissão profissionais e juridicamente válidas</p>
+                </div>
+                <div class="section-content">
+                    <form id="cartaForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="carta_nome">Nome Completo</label>
+                                <input type="text" id="carta_nome" name="nome" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="carta_cargo">Cargo/Função</label>
+                                <input type="text" id="carta_cargo" name="cargo" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="carta_empresa">Nome da Empresa</label>
+                                <input type="text" id="carta_empresa" name="empresa" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="carta_cidade">Cidade</label>
+                                <input type="text" id="carta_cidade" name="cidade" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="carta_categoria">Tipo de Demissão</label>
+                                <select id="carta_categoria" name="categoria" class="form-control" required>
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="demissao_simples">Demissão Simples</option>
+                                    <option value="aviso_previo">Com Aviso Prévio</option>
+                                    <option value="justa_causa">Rescisão Indireta (Justa Causa do Empregador)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="carta_modelo">Modelo da Carta</label>
+                                <select id="carta_modelo" name="modelo" class="form-control" required disabled>
+                                    <option value="">Primeiro selecione o tipo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="carta_data">Data da Carta (opcional)</label>
+                                <input type="date" id="carta_data" name="data" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="carta_motivo">Observações Adicionais (opcional)</label>
+                            <textarea id="carta_motivo" name="motivo" class="form-control" rows="3" placeholder="Adicione informações extras que deseja incluir na carta..."></textarea>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">
+                                ✉️ Gerar Carta de Demissão
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="cartaLoading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Gerando sua carta de demissão...</p>
+                    </div>
+
+                    <div id="cartaResult" class="hidden">
+                        <!-- Resultado da carta será inserido aqui -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Novo Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 DespedeAí. Todos os direitos reservados.</p>
+            <p>Desenvolvido por PlayPage - <a href="https://kymdev.github.io/PlayPage/" target="_blank">PlayPage</a></p>
+            <p>Gostou do nosso trabalho? Ajude-nos com um cafezinho! 🫶</p>
+            <p>PIX: kimps05@hotmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // Variáveis globais
+        let modelosCartas = {};
+        let experienciaIndex = 1;
+        let educacaoIndex = 1;
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarModelosCartas();
+            configurarEventListeners();
+            
+            // Minimizar o card do advogado após 10 segundos
+            setTimeout(minimizarAdvogadoCard, 10000);
+        });
+
+        // Configurar event listeners
+        function configurarEventListeners() {
+            // Formulário da calculadora
+            document.getElementById('calculadoraForm').addEventListener('submit', calcularRescisao);
+            
+            // Formulário do currículo
+            document.getElementById('curriculoForm').addEventListener('submit', gerarCurriculo);
+            
+            // Formulário da carta
+            document.getElementById('cartaForm').addEventListener('submit', gerarCarta);
+            
+            // Mudança de categoria da carta
+            document.getElementById('carta_categoria').addEventListener('change', atualizarModelosCarta);
+        }
+
+        // Navegação entre seções - CORREÇÃO: Adicionado parâmetro element
+        function showSection(sectionName, element) {
+            // Esconder todas as seções
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remover classe active de todos os botões
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar seção selecionada
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Adicionar classe active ao botão correspondente
+            element.classList.add('active');
+        }
+
+        // Carregar modelos de cartas
+        async function carregarModelosCartas() {
+            try {
+                const response = await fetch('/api/modelos-cartas');
+                const data = await response.json();
+                
+                if (data.success) {
+                    modelosCartas = data.categorias;
+                }
+            } catch (error) {
+                console.error('Erro ao carregar modelos:', error);
+            }
+        }
+
+        // Atualizar modelos de carta baseado na categoria
+        function atualizarModelosCarta() {
+            const categoria = document.getElementById('carta_categoria').value;
+            const modeloSelect = document.getElementById('carta_modelo');
+            
+            modeloSelect.innerHTML = '<option value="">Selecione um modelo</option>';
+            
+            if (categoria && modelosCartas[categoria]) {
+                modeloSelect.disabled = false;
+                modelosCartas[categoria].forEach(modelo => {
+                    const option = document.createElement('option');
+                    option.value = modelo;
+                    option.textContent = modelo.replace('.txt', '').replace(/_/g, ' ');
+                    modeloSelect.appendChild(option);
+                });
+            } else {
+                modeloSelect.disabled = true;
+            }
+        }
+
+        // Calculadora Trabalhista - CORREÇÃO: Problema no tratamento de dados
+        async function calcularRescisao(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Processar dados do formulário com tratamento adequado
+            const dados = {
+                nome: formData.get('nome'),
+                cargo: formData.get('cargo'),
+                empresa: formData.get('empresa'),
+                salario: parseFloat(formData.get('salario')),
+                data_admissao: formData.get('data_admissao'),
+                data_demissao: formData.get('data_demissao'),
+                tipo_demissao: formData.get('tipo_demissao'),
+                saldo_fgts: parseFloat(formData.get('saldo_fgts') || 0),
+                dias_trabalhados_mes: parseInt(formData.get('dias_trabalhados_mes') || new Date(formData.get('data_demissao')).getDate()),
+                horas_extras_mes: parseInt(formData.get('horas_extras_mes') || 0),
+                dependentes_ir: parseInt(formData.get('dependentes_ir') || 0),
+                aviso_trabalhado: formData.get('aviso_trabalhado') === 'true',
+                ferias_vencidas: parseInt(formData.get('ferias_vencidas') || 0),
+                decimo_vencido: false // Pode ser adicionado ao formulário se necessário
+            };
+            
+            mostrarLoading('calculadoraLoading');
+            esconderElemento('calculadoraResult');
+            
+            try {
+                const response = await fetch('/api/calcular-rescisao', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    exibirResultadoCalculadora(result.resultado, dados);
+                } else {
+                    mostrarAlerta('Erro no cálculo: ' + result.error, 'error');
+                }
+            } catch (error) {
+                mostrarAlerta('Erro ao calcular rescisão: ' + error.message, 'error');
+            } finally {
+                esconderLoading('calculadoraLoading');
+            }
+        }
+
+        // Exibir resultado da calculadora
+        function exibirResultadoCalculadora(resultado, dadosUsuario) {
+            const resultDiv = document.getElementById('calculadoraResult');
+            
+            const html = `
+                <div class="result-card">
+                    <h3>💰 Resultado do Cálculo de Rescisão</h3>
+                    <p><strong>Funcionário:</strong> ${dadosUsuario.nome}</p>
+                    <p><strong>Empresa:</strong> ${dadosUsuario.empresa}</p>
+                    <p><strong>Cargo:</strong> ${dadosUsuario.cargo}</p>
+                    <p><strong>Tempo de Serviço:</strong> ${resultado.tempo_servico.anos} anos e ${resultado.tempo_servico.meses} meses</p>
+                </div>
+                
+                <div class="result-grid">
+                    <div class="result-item">
+                        <h4>💵 Saldo de Salário</h4>
+                        <div class="result-value">R$ ${resultado.verbas.saldo_salario.valor.toFixed(2)}</div>
+                        <small>${resultado.verbas.saldo_salario.dias_trabalhados} dias trabalhados</small>
+                    </div>
+                    
+                    <div class="result-item">
+                        <h4>🏖️ Férias Proporcionais + 1/3</h4>
+                        <div class="result-value">R$ ${resultado.verbas.ferias_proporcionais.total.toFixed(2)}</div>
+                        <small>${resultado.verbas.ferias_proporcionais.meses_trabalhados} meses trabalhados</small>
+                    </div>
+                    
+                    <div class="result-item">
+                        <h4>🎄 13º Salário Proporcional</h4>
+                        <div class="result-value">R$ ${resultado.verbas.decimo_terceiro.total.toFixed(2)}</div>
+                        <small>${resultado.verbas.decimo_terceiro.meses_trabalhados} meses trabalhados</small>
+                    </div>
+                    
+                    <div class="result-item">
+                        <h4>⏰ Aviso Prévio</h4>
+                        <div class="result-value">R$ ${resultado.verbas.aviso_previo.valor.toFixed(2)}</div>
+                        <small>${resultado.verbas.aviso_previo.dias} dias (${resultado.verbas.aviso_previo.tipo})</small>
+                    </div>
+                    
+                    <div class="result-item">
+                        <h4>🏦 Multa FGTS</h4>
+                        <div class="result-value">R$ ${resultado.verbas.multa_fgts.valor.toFixed(2)}</div>
+                        <small>${resultado.verbas.multa_fgts.percentual}% sobre o saldo</small>
+                    </div>
+                    
+                    <div class="result-item">
+                        <h4>⏱️ Horas Extras</h4>
+                        <div class="result-value">R$ ${(resultado.verbas.horas_extras.total_horas_extras + resultado.verbas.horas_extras.dsr.valor_dsr).toFixed(2)}</div>
+                        <small>Incluindo DSR</small>
+                    </div>
+                </div>
+                
+                <div class="result-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h3>📊 Resumo Financeiro</h3>
+                    <div class="result-grid">
+                        <div style="text-align: center;">
+                            <h4 style="color: white;">Total Bruto</h4>
+                            <div style="font-size: 1.5rem; font-weight: bold;">R$ ${resultado.resumo.total_bruto.toFixed(2)}</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <h4 style="color: white;">Descontos</h4>
+                            <div style="font-size: 1.2rem;">
+                                INSS: R$ ${resultado.resumo.desconto_inss.toFixed(2)}<br>
+                                IRRF: R$ ${resultado.resumo.desconto_irrf.toFixed(2)}
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <h4 style="color: white;">Total Líquido</h4>
+                            <div style="font-size: 1.8rem; font-weight: bold;">R$ ${resultado.resumo.total_liquido.toFixed(2)}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <strong>ℹ️ Importante:</strong> Este cálculo é uma estimativa baseada na legislação vigente. 
+                    Consulte sempre um contador ou advogado trabalhista para validação oficial dos valores.
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-primary" onclick="imprimirResultado()">
+                        🖨️ Imprimir Resultado
+                    </button>
+                </div>
+            `;
+            
+            resultDiv.innerHTML = html;
+            mostrarElemento('calculadoraResult');
+        }
+
+        // Gerador de Currículo
+        async function gerarCurriculo(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Processar dados do formulário
+            const dados = {
+                nome_completo: formData.get('nome_completo'),
+                email: formData.get('email'),
+                telefone: formData.get('telefone'),
+                cidade: formData.get('cidade'),
+                estado: formData.get('estado'),
+                linkedin: formData.get('linkedin'),
+                resumo_profissional: formData.get('resumo_profissional'),
+                experiencias: [],
+                educacao: [],
+                habilidades: formData.get('habilidades') ? formData.get('habilidades').split(',').map(h => h.trim()) : []
+            };
+            
+            // Processar experiências
+            for (let i = 0; i < experienciaIndex; i++) {
+                const cargo = formData.get(`experiencias[${i}][cargo]`);
+                if (cargo) {
+                    dados.experiencias.push({
+                        cargo: cargo,
+                        empresa: formData.get(`experiencias[${i}][empresa]`),
+                        periodo: formData.get(`experiencias[${i}][periodo]`),
+                        descricao: formData.get(`experiencias[${i}][descricao]`)
+                    });
+                }
+            }
+            
+            // Processar educação
+            for (let i = 0; i < educacaoIndex; i++) {
+                const curso = formData.get(`educacao[${i}][curso]`);
+                if (curso) {
+                    dados.educacao.push({
+                        curso: curso,
+                        instituicao: formData.get(`educacao[${i}][instituicao]`),
+                        periodo: formData.get(`educacao[${i}][periodo]`)
+                    });
+                }
+            }
+            
+            mostrarLoading('curriculoLoading');
+            esconderElemento('curriculoPreview');
+            
+            try {
+                const response = await fetch('/api/gerar-curriculo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    exibirPreviewCurriculo(result.curriculo_html);
+                } else {
+                    mostrarAlerta('Erro ao gerar currículo: ' + result.error, 'error');
+                }
+            } catch (error) {
+                mostrarAlerta('Erro ao gerar currículo: ' + error.message, 'error');
+            } finally {
+                esconderLoading('curriculoLoading');
+            }
+        }
+
+        // Exibir preview do currículo
+        function exibirPreviewCurriculo(curriculoHtml) {
+            const previewDiv = document.getElementById('curriculoPreview');
+            
+            previewDiv.innerHTML = `
+                <h3>📄 Preview do Currículo</h3>
+                <div class="curriculum-preview">
+                    ${curriculoHtml}
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-primary" onclick="baixarCurriculo()">
+                        💾 Baixar Currículo (PDF)
+                    </button>
+                    <button class="btn btn-secondary" onclick="imprimirCurriculo()">
+                        🖨️ Imprimir Currículo
+                    </button>
+                </div>
+            `;
+            
+            mostrarElemento('curriculoPreview');
+        }
+
+        // Adicionar experiência
+        function adicionarExperiencia() {
+            const container = document.getElementById('experienciasContainer');
+            const novaExperiencia = document.createElement('div');
+            novaExperiencia.className = 'experiencia-item';
+            novaExperiencia.setAttribute('data-index', experienciaIndex);
+            
+            novaExperiencia.innerHTML = `
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Cargo</label>
+                        <input type="text" name="experiencias[${experienciaIndex}][cargo]" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Empresa</label>
+                        <input type="text" name="experiencias[${experienciaIndex}][empresa]" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Período</label>
+                        <input type="text" name="experiencias[${experienciaIndex}][periodo]" class="form-control" placeholder="Ex: Jan 2020 - Dez 2023" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descrição das Atividades</label>
+                    <textarea name="experiencias[${experienciaIndex}][descricao]" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="removerExperiencia(${experienciaIndex})">
+                    ❌ Remover
+                </button>
+            `;
+            
+            container.appendChild(novaExperiencia);
+            experienciaIndex++;
+        }
+
+        // Remover experiência
+        function removerExperiencia(index) {
+            const experiencia = document.querySelector(`[data-index="${index}"]`);
+            if (experiencia) {
+                experiencia.remove();
+            }
+        }
+
+        // Adicionar educação
+        function adicionarEducacao() {
+            const container = document.getElementById('educacaoContainer');
+            const novaEducacao = document.createElement('div');
+            novaEducacao.className = 'educacao-item';
+            novaEducacao.setAttribute('data-index', educacaoIndex);
+            
+            novaEducacao.innerHTML = `
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Curso</label>
+                        <input type="text" name="educacao[${educacaoIndex}][curso]" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Instituição</label>
+                        <input type="text" name="educacao[${educacaoIndex}][instituicao]" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Período</label>
+                        <input type="text" name="educacao[${educacaoIndex}][periodo]" class="form-control" placeholder="Ex: 2018 - 2022" required>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="removerEducacao(${educacaoIndex})">
+                    ❌ Remover
+                </button>
+            `;
+            
+            container.appendChild(novaEducacao);
+            educacaoIndex++;
+        }
+
+        // Remover educação
+        function removerEducacao(index) {
+            const educacao = document.querySelector(`[data-index="${index}"]`);
+            if (educacao) {
+                educacao.remove();
+            }
+        }
+
+        // Gerador de Carta
+        async function gerarCarta(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const dados = Object.fromEntries(formData.entries());
+            
+            mostrarLoading('cartaLoading');
+            esconderElemento('cartaResult');
+            
+            try {
+                const response = await fetch('/api/gerar-carta', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    exibirResultadoCarta(result.carta);
+                } else {
+                    mostrarAlerta('Erro ao gerar carta: ' + result.error, 'error');
+                }
+            } catch (error) {
+                mostrarAlerta('Erro ao gerar carta: ' + error.message, 'error');
+            } finally {
+                esconderLoading('cartaLoading');
+            }
+        }
+
+        // Exibir resultado da carta
+        function exibirResultadoCarta(carta) {
+            const resultDiv = document.getElementById('cartaResult');
+            
+            resultDiv.innerHTML = `
+                <div class="result-card">
+                    <h3>✉️ Carta de Demissão Gerada</h3>
+                    <div style="background: white; padding: 2rem; border-radius: 10px; border: 1px solid #e1e5e9; white-space: pre-line; font-family: 'Times New Roman', serif; line-height: 1.8;">
+                        ${carta}
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn btn-primary" onclick="baixarCarta()">
+                            💾 Baixar Carta (PDF)
+                        </button>
+                        <button class="btn btn-secondary" onclick="imprimirCarta()">
+                            🖨️ Imprimir Carta
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            mostrarElemento('cartaResult');
+        }
+
+        // Funções utilitárias
+        function mostrarLoading(elementId) {
+            document.getElementById(elementId).classList.add('show');
+        }
+
+        function esconderLoading(elementId) {
+            document.getElementById(elementId).classList.remove('show');
+        }
+
+        function mostrarElemento(elementId) {
+            document.getElementById(elementId).classList.remove('hidden');
+        }
+
+        function esconderElemento(elementId) {
+            document.getElementById(elementId).classList.add('hidden');
+        }
+
+        function mostrarAlerta(mensagem, tipo = 'info') {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${tipo}`;
+            alertDiv.innerHTML = mensagem;
+            
+            // Inserir no topo da seção ativa
+            const secaoAtiva = document.querySelector('.section.active .section-content');
+            secaoAtiva.insertBefore(alertDiv, secaoAtiva.firstChild);
+            
+            // Remover após 5 segundos
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+
+        // Funções de impressão e download
+        function imprimirResultado() {
+            window.print();
+        }
+
+        function imprimirCurriculo() {
+            const curriculoContent = document.querySelector('#curriculoPreview .curriculum-preview').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Currículo</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        .curriculum-header { text-align: center; border-bottom: 3px solid #667eea; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .curriculum-section { margin-bottom: 2rem; }
+                        .curriculum-section h3 { color: #667eea; border-bottom: 2px solid #e1e5e9; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+                        .experience-item { margin-bottom: 1.5rem; padding-left: 1rem; border-left: 3px solid #667eea; }
+                        .skills-container { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+                        .skill-tag { background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.9rem; }
+                    </style>
+                </head>
+                <body>${curriculoContent}</body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        function imprimirCarta() {
+            const cartaContent = document.querySelector('#cartaResult .result-card div').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Carta de Demissão</title>
+                    <style>
+                        body { font-family: 'Times New Roman', serif; margin: 40px; line-height: 1.8; }
+                    </style>
+                </head>
+                <body>${cartaContent}</body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Nova função para baixar currículo em PDF
+        async function baixarCurriculo() {
+            const form = document.getElementById('curriculoForm');
+            const formData = new FormData(form);
+            
+            // Processar dados do formulário
+            const dados = {
+                nome_completo: formData.get('nome_completo'),
+                email: formData.get('email'),
+                telefone: formData.get('telefone'),
+                cidade: formData.get('cidade'),
+                estado: formData.get('estado'),
+                linkedin: formData.get('linkedin'),
+                resumo_profissional: formData.get('resumo_profissional'),
+                experiencias: [],
+                educacao: [],
+                habilidades: formData.get('habilidades') ? formData.get('habilidades').split(',').map(h => h.trim()) : []
+            };
+            
+            // Processar experiências
+            for (let i = 0; i < experienciaIndex; i++) {
+                const cargo = formData.get(`experiencias[${i}][cargo]`);
+                if (cargo) {
+                    dados.experiencias.push({
+                        cargo: cargo,
+                        empresa: formData.get(`experiencias[${i}][empresa]`),
+                        periodo: formData.get(`experiencias[${i}][periodo]`),
+                        descricao: formData.get(`experiencias[${i}][descricao]`)
+                    });
+                }
+            }
+            
+            // Processar educação
+            for (let i = 0; i < educacaoIndex; i++) {
+                const curso = formData.get(`educacao[${i}][curso]`);
+                if (curso) {
+                    dados.educacao.push({
+                        curso: curso,
+                        instituicao: formData.get(`educacao[${i}][instituicao]`),
+                        periodo: formData.get(`educacao[${i}][periodo]`)
+                    });
+                }
+            }
+            
+            try {
+                mostrarAlerta('Gerando PDF do currículo...', 'info');
+                
+                const response = await fetch('/api/baixar-curriculo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                });
+                
+                if (response.ok) {
+                    // Verificar se a resposta é realmente um PDF
+                    const contentType = response.headers.get('content-type');
+                    if (contentType && contentType.includes('application/pdf')) {
+                        const blob = await response.blob();
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = `curriculo_${dados.nome_completo.replace(/\s+/g, '_')}.pdf`;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                        document.body.removeChild(a);
+                        mostrarAlerta('Currículo baixado com sucesso!', 'success');
+                    } else {
+                        throw new Error('Resposta não é um PDF válido');
+                    }
+                } else {
+                    const errorText = await response.text();
+                    let errorMessage = 'Erro desconhecido';
+                    try {
+                        const errorJson = JSON.parse(errorText);
+                        errorMessage = errorJson.error || errorMessage;
+                    } catch (e) {
+                        errorMessage = errorText || errorMessage;
+                    }
+                    throw new Error(errorMessage);
+                }
+            } catch (error) {
+                console.error('Erro ao baixar currículo:', error);
+                mostrarAlerta('Erro ao baixar currículo: ' + error.message, 'error');
+            }
+        }
+
+        // Nova função para baixar carta em PDF
+        async function baixarCarta() {
+            const form = document.getElementById('cartaForm');
+            const formData = new FormData(form);
+            const dados = {
+                categoria: formData.get('categoria'),
+                modelo: formData.get('modelo'),
+                dados: {
+                    nome: formData.get('nome'),
+                    cargo: formData.get('cargo'),
+                    empresa: formData.get('empresa'),
+                    cidade: formData.get('cidade'),
+                    motivo: formData.get('motivo'),
+                    data: formData.get('data')
+                }
+            };
+            
+            try {
+                mostrarAlerta('Gerando PDF da carta de demissão...', 'info');
+                
+                const response = await fetch('/api/baixar-carta', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                });
+                
+                if (response.ok) {
+                    // Verificar se a resposta é realmente um PDF
+                    const contentType = response.headers.get('content-type');
+                    if (contentType && contentType.includes('application/pdf')) {
+                        const blob = await response.blob();
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = `carta_demissao_${dados.dados.nome.replace(/\s+/g, '_')}.pdf`;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                        document.body.removeChild(a);
+                        mostrarAlerta('Carta de demissão baixada com sucesso!', 'success');
+                    } else {
+                        throw new Error('Resposta não é um PDF válido');
+                    }
+                } else {
+                    const errorText = await response.text();
+                    let errorMessage = 'Erro desconhecido';
+                    try {
+                        const errorJson = JSON.parse(errorText);
+                        errorMessage = errorJson.error || errorMessage;
+                    } catch (e) {
+                        errorMessage = errorText || errorMessage;
+                    }
+                    throw new Error(errorMessage);
+                }
+            } catch (error) {
+                console.error('Erro ao baixar carta:', error);
+                mostrarAlerta('Erro ao baixar carta: ' + error.message, 'error');
+            }
+        }
+
+        // Funções para o card do advogado
+        function toggleAdvogadoCard() {
+            const card = document.getElementById('advogadoCard');
+            card.classList.toggle('minimizado');
+            
+            // Alterar o botão quando minimizado
+            const btn = card.querySelector('.btn-minimizar');
+            if (card.classList.contains('minimizado')) {
+                btn.innerHTML = '+';
+                btn.title = 'Expandir';
+            } else {
+                btn.innerHTML = '×';
+                btn.title = 'Minimizar';
+            }
+        }
+        
+        function minimizarAdvogadoCard() {
+            const card = document.getElementById('advogadoCard');
+            if (!card.classList.contains('minimizado')) {
+                card.classList.add('minimizado');
+                const btn = card.querySelector('.btn-minimizar');
+                btn.innerHTML = '+';
+                btn.title = 'Expandir';
+            }
+        }
+
+        // Fechar card se clicar fora dele
+        document.addEventListener('click', function(event) {
+            const card = document.getElementById('advogadoCard');
+            if (!card.contains(event.target) && !card.classList.contains('minimizado')) {
+                minimizarAdvogadoCard();
+            }
+        });
+    </script>
+</body>
+</html>

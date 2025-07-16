@@ -1,0 +1,20 @@
+{local_data}
+
+Ao
+Departamento de Recursos Humanos
+{empresa}
+
+Prezados Senhores,
+
+Venho por meio desta comunicar minha decisão de me desligar do cargo de {cargo} desta empresa, solicitando meu desligamento a partir desta data.
+
+Agradeço pela oportunidade de crescimento profissional e pelas experiências adquiridas durante o período em que estive vinculado(a) a esta organização.
+
+{motivo_opcional}
+
+Coloco-me à disposição para o cumprimento do aviso prévio, conforme estabelecido pela legislação trabalhista, e para a realização dos procedimentos necessários para a formalização do desligamento.
+
+Atenciosamente,
+
+{nome}
+

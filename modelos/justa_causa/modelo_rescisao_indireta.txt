@@ -1,0 +1,44 @@
+{local_data}
+
+À {empresa}
+A/C Departamento de Recursos Humanos
+
+Prezados Senhores,
+
+Venho por meio desta comunicar formalmente minha decisão de rescindir o contrato de trabalho por justa causa do empregador (rescisão indireta), conforme previsto no artigo 483 da Consolidação das Leis do Trabalho (CLT).
+
+A presente decisão fundamenta-se nas seguintes situações que configuram justa causa do empregador:
+
+{motivo_opcional}
+
+Diante dos fatos expostos, que caracterizam descumprimento das obrigações contratuais por parte da empresa, solicito:
+
+1. Rescisão imediata do contrato de trabalho
+2. Pagamento de todas as verbas rescisórias como se fosse demissão sem justa causa:
+   • Saldo de salário
+   • Aviso prévio indenizado
+   • Férias proporcionais + 1/3 constitucional
+   • 13º salário proporcional
+   • Multa de 40% sobre o FGTS
+   • Liberação das guias para saque do FGTS e seguro-desemprego
+
+3. Indenização por danos morais, se aplicável
+
+Ressalto que esta decisão foi tomada após esgotadas as tentativas de resolução amigável da situação.
+
+Coloco-me à disposição para os procedimentos necessários ao acerto de contas, que deverá ser realizado conforme os prazos legais estabelecidos.
+
+Atenciosamente,
+
+_________________________________
+{nome}
+
+---
+COMPROVANTE DE ENTREGA
+
+Recebi em ___/___/_____ às ___:___ horas.
+
+Nome: _________________________________
+Cargo: ________________________________
+Assinatura: ____________________________
+

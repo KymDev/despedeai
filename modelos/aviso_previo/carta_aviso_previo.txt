@@ -1,0 +1,22 @@
+{local_data}
+
+Ao
+Departamento de Recursos Humanos
+{empresa}
+
+Prezados Senhores,
+
+Venho por meio desta comunicar formalmente minha decisão de me desligar do cargo de {cargo} desta empresa.
+
+Conforme estabelecido pela legislação trabalhista vigente (CLT), cumpro o aviso prévio de 30 (trinta) dias, sendo meu último dia de trabalho em [DATA + 30 DIAS].
+
+Durante este período, mantenho-me à disposição para a conclusão de projetos em andamento e para a transferência de responsabilidades, visando garantir a continuidade dos trabalhos.
+
+{motivo_opcional}
+
+Agradeço pela oportunidade de desenvolvimento profissional e pelas experiências adquiridas durante minha permanência nesta organização.
+
+Atenciosamente,
+
+{nome}
+

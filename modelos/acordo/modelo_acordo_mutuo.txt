@@ -1,0 +1,48 @@
+{local_data}
+
+À {empresa}
+A/C Departamento de Recursos Humanos
+
+Prezados Senhores,
+
+Venho por meio desta propor a rescisão do contrato de trabalho por acordo mútuo, conforme previsto no artigo 484-A da Consolidação das Leis do Trabalho (CLT), incluído pela Lei nº 13.467/2017.
+
+Esta modalidade de rescisão apresenta vantagens para ambas as partes:
+
+Para o empregado:
+• Direito ao saque de 80% do saldo do FGTS
+• Direito a 50% do valor do seguro-desemprego
+• Pagamento de 50% do aviso prévio
+• Demais verbas rescisórias integrais
+
+Para o empregador:
+• Pagamento de apenas 20% da multa do FGTS (ao invés de 40%)
+• Redução de custos com o aviso prévio
+
+Verbas a serem pagas na rescisão por acordo:
+• Saldo de salário
+• Férias proporcionais + 1/3 constitucional
+• 13º salário proporcional
+• 50% do aviso prévio
+• 20% de multa sobre o FGTS
+
+{motivo_opcional}
+
+Agradeço pela oportunidade de crescimento profissional durante meu período de trabalho e pela consideração desta proposta de acordo.
+
+Coloco-me à disposição para agendar uma reunião e formalizar os termos do acordo.
+
+Atenciosamente,
+
+_________________________________
+{nome}
+
+---
+COMPROVANTE DE ENTREGA
+
+Recebi em ___/___/_____ às ___:___ horas.
+
+Nome: _________________________________
+Cargo: ________________________________
+Assinatura: ____________________________
+
